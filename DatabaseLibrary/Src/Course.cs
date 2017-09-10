@@ -11,7 +11,7 @@ namespace LibraryCode.Src
     {
         public int CourseID { get; set; }
         public string Name { get; set; }
-        public int CreditHours { get; set; }
+        public double CreditHours { get; set; }
         public string TimeSlotStart { get; set; }
         public string TimeSlotEnd { get; set; }
         public int MaxStudents { get; set; }

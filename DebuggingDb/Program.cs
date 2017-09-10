@@ -20,20 +20,25 @@ namespace DebuggingDb
         {
             var ef = new EntityFramework();
 
-            //ef.Codefirstcrap();
-            //ef.AddCourses();
+            
+        }
 
-            //adding courses to student
-            //var stu = ef.GetStudent("Jessica John");
-            //stu.Person.Subjects.Add(ef.GetCourse("Gym"));
-            //stu.Person.Subjects.Add(ef.GetCourse("Art"));
-            //ef.UpdateStudent(stu);
+        public static bool CheckTimeConflict(Course rhs, Course lhs)
+        {
+            int start1 = Convert.ToInt32(rhs.TimeSlotStart);
+            int end1 = Convert.ToInt32(rhs.TimeSlotEnd);
 
-            var cour = ef.GetCourse("Gym");
-            var p = new Person() { FirstName = "To", LastName = "Delete", FullTime = true, Username = "User", Password = "Pass" };
+            int start2 = Convert.ToInt32(lhs.TimeSlotStart);
+            int end2 = Convert.ToInt32(lhs.TimeSlotEnd);
 
-            //ef.AddStudent(p);
-            //ef.RemoveStudent("To Delete");
+            //if (start1 == start2)
+            //    return true;
+            if (start1 < start2 + (end2 - start2) &&
+                start1 + (end1 - start1) > start2)
+                return true;
+
+
+            return false;
         }
     }
 }
