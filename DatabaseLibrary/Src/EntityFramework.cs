@@ -107,8 +107,7 @@ namespace LibraryCode.Src
             if(tobeupdated != null)
             {
                 tobeupdated.Person = _student.Person;
-                //tobeupdated.Subjects = _student.Subjects;
-
+            
                 SaveChanges();
             }
         }
@@ -120,7 +119,6 @@ namespace LibraryCode.Src
             if(tobedeleted != null)
             {
                 Persons.Remove(tobedeleted.Person);
-                
                 Students.Remove(tobedeleted);
                 SaveChanges();
             }
@@ -135,9 +133,64 @@ namespace LibraryCode.Src
         public Student GetStudent(string name)
         {
             Student result = Students.First(p => p.Person.FirstName + " " + p.Person.LastName == name);
-            //result.Person = Persons.First(p => p.FirstName + " " + p.LastName == name);
-            return result;//Students.First(p => p.Person.FirstName + " " + p.Person.LastName == name);
+
+            return result;
         }
 
+        public Professor GetProfessor(string name)
+        {
+            Professor result = Professors.First(p => p.Person.FirstName + " " + p.Person.LastName == name);
+
+            return result;
+        }
+
+        public void UpdateProfessor(Professor professor)
+        {
+            var tobeupdated = Professors.First(p => p.ProfessorID == professor.ProfessorID);
+            if (tobeupdated != null)
+            {
+                tobeupdated.Person = professor.Person;
+
+                SaveChanges();
+            }
+        }
+        public void RemoveProfessor(string _name)
+        {
+            var tobedeleted = Professors.First(p => p.Person.FirstName + " " + p.Person.LastName == _name);
+            if (tobedeleted != null)
+            {
+                Persons.Remove(tobedeleted.Person);
+                Professors.Remove(tobedeleted);
+                SaveChanges();
+            }
+        }
+
+        public Registar GetRegistar(string name)
+        {
+            Registar result = Registars.First(p => p.Person.FirstName + " " + p.Person.LastName == name);
+
+            return result;
+        }
+
+        public void UpdateRegistar(Registar reg)
+        {
+            var tobeupdated = Registars.First(p => p.RegistarID == reg.RegistarID);
+            if (tobeupdated != null)
+            {
+                tobeupdated.Person = reg.Person;
+
+                SaveChanges();
+            }
+        }
+        public void RemoveRegistar(string _name)
+        {
+            var tobedeleted = Registars.First(p => p.Person.FirstName + " " + p.Person.LastName == _name);
+            if (tobedeleted != null)
+            {
+                Persons.Remove(tobedeleted.Person);
+                Registars.Remove(tobedeleted);
+                SaveChanges();
+            }
+        }
     }
 }

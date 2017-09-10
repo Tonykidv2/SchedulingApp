@@ -1,4 +1,5 @@
-﻿using LibraryCode.Src;
+﻿using LibraryCode.People;
+using LibraryCode.Src;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,16 @@ namespace DebuggingDb
             //ef.Codefirstcrap();
             //ef.AddCourses();
 
-            var stu = ef.GetStudent("Jessica John");
-            stu.Person.Subjects.Add(ef.GetCourse("Gym"));
-            stu.Person.Subjects.Add(ef.GetCourse("Art"));
-            ef.SaveChanges();
+            //adding courses to student
+            //var stu = ef.GetStudent("Jessica John");
+            //stu.Person.Subjects.Add(ef.GetCourse("Gym"));
+            //stu.Person.Subjects.Add(ef.GetCourse("Art"));
+            //ef.UpdateStudent(stu);
+
+            var p = new Person() { FirstName = "To", LastName = "Delete", FullTime = true, Username = "User", Password = "Pass" };
+
+            ef.AddStudent(p);
+            ef.RemoveStudent("To Delete");
         }
     }
 }
