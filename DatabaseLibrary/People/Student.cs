@@ -10,7 +10,7 @@ namespace LibraryCode.People
     public class Student
     {
         public int StudentID { get; set; }
-
+        public double CurrCredits { get; set; }
         public virtual Person Person {get; set;}
         
 

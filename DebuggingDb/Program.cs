@@ -29,10 +29,11 @@ namespace DebuggingDb
             //stu.Person.Subjects.Add(ef.GetCourse("Art"));
             //ef.UpdateStudent(stu);
 
+            var cour = ef.GetCourse("Gym");
             var p = new Person() { FirstName = "To", LastName = "Delete", FullTime = true, Username = "User", Password = "Pass" };
 
-            ef.AddStudent(p);
-            ef.RemoveStudent("To Delete");
+            //ef.AddStudent(p);
+            //ef.RemoveStudent("To Delete");
         }
     }
 }
