@@ -12,10 +12,12 @@ namespace LogicLibrary.DBContexts
     {
         Professor professor;
 
-        public ProfessorContext(Professor _professor)
+        public ProfessorContext(Professor _professor, string _username, string _pass)
         {
             entityFramework = Database.Instance;
             professor = _professor;
+            Username = _username;
+            Password = _pass;
         }
 
         public bool RegisterStudent(Student _student)

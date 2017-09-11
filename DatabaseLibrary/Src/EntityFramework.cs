@@ -56,17 +56,18 @@ namespace LibraryCode.Src
             //Console.WriteLine(people.First().Name);
         }
 
-        public void AddCourses()
+        public void AddCourse(Course _course)
         {
-            var Gymcourse = new Course() { Name = "Gym", CreditHours = 4, TimeSlotStart = "0500", TimeSlotEnd = "0900", MaxStudents = 20 };
-            var Physic = new Course() { Name = "Physic", CreditHours = 4, TimeSlotStart = "1000", TimeSlotEnd = "1400", MaxStudents = 20 };
-            var ArtCourse = new Course() { Name = "Art", CreditHours = 4, TimeSlotStart = "1500", TimeSlotEnd = "1900", MaxStudents = 20 };
-            var ProgrammingCourse = new Course() { Name = "Programming", CreditHours = 4, TimeSlotStart = "2000", TimeSlotEnd = "2400", MaxStudents = 20 };
+            //var Gymcourse = new Course() { Name = "Gym", CreditHours = 4, TimeSlotStart = "0500", TimeSlotEnd = "0900", MaxStudents = 20 };
+            //var Physic = new Course() { Name = "Physic", CreditHours = 4, TimeSlotStart = "1000", TimeSlotEnd = "1400", MaxStudents = 20 };
+            //var ArtCourse = new Course() { Name = "Art", CreditHours = 4, TimeSlotStart = "1500", TimeSlotEnd = "1900", MaxStudents = 20 };
+            //var ProgrammingCourse = new Course() { Name = "Programming", CreditHours = 4, TimeSlotStart = "2000", TimeSlotEnd = "2400", MaxStudents = 20 };
 
-            Courses.Add(Gymcourse);
-            Courses.Add(Physic);
-            Courses.Add(ArtCourse);
-            Courses.Add(ProgrammingCourse);
+            //Courses.Add(Gymcourse);
+            //Courses.Add(Physic);
+            //Courses.Add(ArtCourse);
+            //Courses.Add(ProgrammingCourse);
+            Courses.Add(_course);
             SaveChanges();
         }
 

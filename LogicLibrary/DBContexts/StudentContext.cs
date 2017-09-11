@@ -11,10 +11,12 @@ namespace LogicLibrary.DBContexts
     class StudentContext : UserContext
     {
 
-        public StudentContext(Student _student)
+        public StudentContext(Student _student, string _username, string _pass)
         {
             entityFramework = Database.Instance;
             student = _student;
+            Username = _username;
+            Password = _pass;
         }
 
         private Student student;
