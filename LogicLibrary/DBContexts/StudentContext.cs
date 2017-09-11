@@ -17,7 +17,7 @@ namespace LogicLibrary.DBContexts
             student = _student;
         }
 
-        public Student student;
+        private Student student;
 
         public bool EnrollInCouse(Course course)
         {
@@ -62,5 +62,7 @@ namespace LogicLibrary.DBContexts
         {
             return student.Person.Subjects.Remove(course);
         }
+
+
     }
 }

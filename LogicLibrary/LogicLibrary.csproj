@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBContexts\Database.cs" />
+    <Compile Include="DBContexts\ProfessorContext.cs" />
     <Compile Include="DBContexts\StudentContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DBContexts\UserContext.cs" />
