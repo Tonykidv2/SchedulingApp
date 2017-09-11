@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201709102149275_addingcurrcredithourstostudent.Designer.cs">
       <DependentUpon>201709102149275_addingcurrcredithourstostudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709110124580_changingStudentcurrcredittodouble.cs" />
+    <Compile Include="Migrations\201709110124580_changingStudentcurrcredittodouble.Designer.cs">
+      <DependentUpon>201709110124580_changingStudentcurrcredittodouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="People\Person.cs" />
     <Compile Include="People\Professor.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709102149275_addingcurrcredithourstostudent.resx">
       <DependentUpon>201709102149275_addingcurrcredithourstostudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709110124580_changingStudentcurrcredittodouble.resx">
+      <DependentUpon>201709110124580_changingStudentcurrcredittodouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

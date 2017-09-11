@@ -21,7 +21,7 @@ namespace LogicLibrary.DBContexts
 
         public bool EnrollInCouse(Course course)
         {
-            if((student.CurrCredits + course.CreditHours) < 18.0d && (course.Enrolled.Count + 1) < course.MaxStudents)
+            if((student.CurrCredits + course.CreditHours) < 18.0d && course.Enrolled.Count >= 1 && (course.Enrolled.Count + 1) < course.MaxStudents )
             {
                 foreach (var item in student.Person.Subjects)
                 {

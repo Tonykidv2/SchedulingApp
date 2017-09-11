@@ -20,7 +20,6 @@ namespace DebuggingDb
         {
             var ef = new EntityFramework();
 
-            
         }
 
         public static bool CheckTimeConflict(Course rhs, Course lhs)

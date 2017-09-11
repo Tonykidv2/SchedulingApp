@@ -57,7 +57,8 @@ namespace LogicLibrary.DBContexts
         {
             if (professor.Person.Subjects.First() != null)
             {
-
+                _course.Enrolled.Clear();
+                entityFramework.UpdateCourse(_course);
                 return true;
             }
 
