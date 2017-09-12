@@ -41,6 +41,7 @@ namespace LibraryCode.Src
                                 }
                           );
         }
+
         public void Codefirstcrap()
         {
             //var ef = new EntityFramework();
@@ -192,6 +193,48 @@ namespace LibraryCode.Src
                 Registars.Remove(tobedeleted);
                 SaveChanges();
             }
+        }
+
+        public Student GetStudent(string _username, string _pass)
+        {
+            Student result = null;
+            try
+            {
+                result = Students.First(p => p.Person.Username == _username && p.Person.Password == _pass);
+            }
+            catch
+            {
+
+                return null;
+            }            
+            return result;
+        }
+        public Professor GetProfessor(string _username, string _pass)
+        {
+            Professor result = null;
+            try
+            {
+                result = Professors.First(p => p.Person.Username == _username && p.Person.Password == _pass);
+            }
+            catch
+            {
+
+                return null;
+            }
+            return result;
+        }
+        public Registar GetRegistar(string _username, string _pass)
+        {
+            Registar result = null;
+            try
+            {
+                result = Registars.First(p => p.Person.Username == _username && p.Person.Password == _pass);
+            }
+            catch
+            {
+                return null;
+            }
+            return result;
         }
     }
 }

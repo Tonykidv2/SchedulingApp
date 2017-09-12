@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebuggingDb", "DebuggingDb\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLibrary", "LogicLibrary\LogicLibrary.csproj", "{E91C3402-D6B8-4D18-AD2C-49509F08B661}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AUWebsite", "AUWebsite\AUWebsite.csproj", "{F7FEC279-E09E-4C01-BB00-280B1CF87D7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E91C3402-D6B8-4D18-AD2C-49509F08B661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E91C3402-D6B8-4D18-AD2C-49509F08B661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E91C3402-D6B8-4D18-AD2C-49509F08B661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7FEC279-E09E-4C01-BB00-280B1CF87D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7FEC279-E09E-4C01-BB00-280B1CF87D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7FEC279-E09E-4C01-BB00-280B1CF87D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7FEC279-E09E-4C01-BB00-280B1CF87D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.DBContexts
 {
-    class Database
+    public class Database
     {
         private static EntityFramework instance;
 

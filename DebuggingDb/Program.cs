@@ -20,6 +20,10 @@ namespace DebuggingDb
         {
             var ef = new EntityFramework();
 
+            var stu = ef.GetStudent("user", "pass");
+
+            stu.CurrCredits = 2;
+
         }
 
         public static bool CheckTimeConflict(Course rhs, Course lhs)

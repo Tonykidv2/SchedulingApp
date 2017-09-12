@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary
 {
-    abstract class UserContext
+    public abstract class UserContext
     {
         protected EntityFramework entityFramework;
         protected string Username;
