@@ -1,4 +1,4 @@
-﻿
+﻿@model AUWebsite.Models.User
 @{
     //ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,27 +6,75 @@
 }
 
 <h2>@ViewBag.Title</h2>
+@*@using (Html.BeginForm("UserPage", "Login"))
+{
+    <div>
+    <form class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <h5>User Type</h5>
+                <select class="form-control" id="select" value="_type">
+                    <option>Student</option>
+                    <option>Professor</option>
+                    <option>Registar</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputUsername" value="_username">Username</label>
+                <input type="text" class="form-control" id="inputUsername" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" value="_pass">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="">
+            </div>
+            <h5>Confirm?</h5>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="WhatisClicked">Submit</button>
+                <button type="reset" class="btn btn-default" >Cancel</button>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+}
+<script>
+    var $Whatisclicked = $('#WhatisClicked');
 
-<form class="form-horizontal">
-    <div class="form-group">
-        <label for="inputUsername">Username</label>
-        <input type="text" class="form-control" id="inputUsername" placeholder="">
-    </div>
-    <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="">
-    </div>
-    <div class="form-group">
-        <h5>User Type</h5>
-        <select class="form-control" id="select">
-            <option>Student</option>
-            <option>Professor</option>
-            <option>Registar</option>
-        </select>
-    </div>
-    <h5>Confirm?</h5>
-    <div class="form-group">
-        <button type="reset" class="btn btn-default">Cancel</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</form>
+    $Whatisclicked.live('Click', function () {
+        var theType = $('#select').val();
+        var theUser = $('#inputUsername').val();
+        var thepass = $('#inputPassword').val();
+
+        $.ajax({
+            type: "Post",
+            url: "Login/UserPage",
+            contentType: "application/json; charset=utf-8",
+            data: { _type: theType, _username: theUser, _password: thepass },
+            dataType: "json",
+            success: function (result) {
+                alert('Yay! It worked!');
+                // Or if you are returning something
+                alert('I returned... ' + result.WhateverIsReturning);
+            },
+            error: function (result) {
+                alert('Oh no :(');
+            }
+        });
+    });
+</script>*@
+
+@using (Html.BeginForm("CreateContext", "Login"))
+{       <div>
+            @*@Html.ListBoxFor(c => c.List);*@
+        </div>
+        <div>
+            @Html.TextAreaFor(c => c.Username);
+        </div>
+        <div>
+            @Html.TextAreaFor(c => c.Password);
+        </div>
+    <button type="submit" class="btn btn-primary" id="WhatisClicked">Submit</button>
+
+
+}
+
+@*}*@

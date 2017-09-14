@@ -13,6 +13,10 @@ namespace AUWebsite
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "UserLog",
+            //    url: )
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

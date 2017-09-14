@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.DBContexts
 {
-    class StudentContext : UserContext
+    public class StudentContext : UserContext
     {
-
+        //Student can null
         public StudentContext(Student _student, string _username, string _pass)
         {
             entityFramework = Database.Instance;
-            student = _student;
+            student = entityFramework.GetStudent(_username, _pass);
             Username = _username;
             Password = _pass;
         }

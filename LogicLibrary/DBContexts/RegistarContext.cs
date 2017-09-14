@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.DBContexts
 {
-    class RegistarContext : UserContext
+    public class RegistarContext : UserContext
     {
         Registar registar;
 

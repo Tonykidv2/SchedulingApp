@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LogicLibrary.DBContexts
 {
-    class ProfessorContext : UserContext
+    public class ProfessorContext : UserContext
     {
         Professor professor;
 
