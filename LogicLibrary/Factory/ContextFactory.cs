@@ -16,6 +16,13 @@ namespace LogicLibrary.Factory
             Registar
         }
 
+        private static UserContext instance;
+
+        public static UserContext InstanceContext { get
+            {
+                return instance;
+            } }
+
         public static UserContext GetContext(ContextType _type, string _username, string _pass)
         {
             UserContext result = null;
@@ -42,6 +49,7 @@ namespace LogicLibrary.Factory
                 default:
                     break;
             }
+            instance = result;
 
             return result;
         }

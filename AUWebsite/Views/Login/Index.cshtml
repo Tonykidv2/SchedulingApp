@@ -1,4 +1,5 @@
 ﻿@model AUWebsite.Models.User
+
 @{
     //ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,75 +7,65 @@
 }
 
 <h2>@ViewBag.Title</h2>
-@*@using (Html.BeginForm("UserPage", "Login"))
-{
-    <div>
-    <form class="form-horizontal">
-        <fieldset>
-            <div class="form-group">
-                <h5>User Type</h5>
-                <select class="form-control" id="select" value="_type">
-                    <option>Student</option>
-                    <option>Professor</option>
-                    <option>Registar</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="inputUsername" value="_username">Username</label>
-                <input type="text" class="form-control" id="inputUsername" placeholder="">
-            </div>
-            <div class="form-group">
-                <label for="inputPassword" value="_pass">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="">
-            </div>
-            <h5>Confirm?</h5>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary" id="WhatisClicked">Submit</button>
-                <button type="reset" class="btn btn-default" >Cancel</button>
-            </div>
-        </fieldset>
-    </form>
-    </div>
-}
-<script>
-    var $Whatisclicked = $('#WhatisClicked');
-
-    $Whatisclicked.live('Click', function () {
-        var theType = $('#select').val();
-        var theUser = $('#inputUsername').val();
-        var thepass = $('#inputPassword').val();
-
-        $.ajax({
-            type: "Post",
-            url: "Login/UserPage",
-            contentType: "application/json; charset=utf-8",
-            data: { _type: theType, _username: theUser, _password: thepass },
-            dataType: "json",
-            success: function (result) {
-                alert('Yay! It worked!');
-                // Or if you are returning something
-                alert('I returned... ' + result.WhateverIsReturning);
-            },
-            error: function (result) {
-                alert('Oh no :(');
-            }
-        });
-    });
-</script>*@
-
+@Html.AntiForgeryToken()
+@*Looks More Fancy*@
 @using (Html.BeginForm("CreateContext", "Login"))
+{
+    @Html.AntiForgeryToken()
+    if (Model.Incorrect)
+    {
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
+        </div>
+    }
+        <div>
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <h5>User Type</h5>
+                    <select class="form-control" id=selected1 value="_type" name="selected1">
+                        <option>Student</option>
+                        <option>Professor</option>
+                        <option>Registar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Username" value="_username">Username</label>
+                    <input type="text" class="form-control" name ="Username1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="Password" >Password</label>
+                    <input type="password" class="form-control" name="Password1" id ="Password" placeholder="">
+                </div>
+                <h5>Confirm?</h5>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="WhatisClicked">Submit</button>
+                    <button type="reset" class="btn btn-default" >Cancel</button>
+                </div>
+            </fieldset>
+        </form>
+        </div>
+        
+    }
+
+@*Easier code*@
+@*@using (Html.BeginForm("CreateContext", "Login"))
 {       <div>
-            @*@Html.ListBoxFor(c => c.List);*@
+            <label>Choose User Type</label>
+            @Html.DropDownListFor(c => c.selected1, Model.List1)
         </div>
         <div>
-            @Html.TextAreaFor(c => c.Username);
+            <label>Username: </label>
+            @Html.TextBox("Username1", null, new { @class = "form-control" })
         </div>
         <div>
-            @Html.TextAreaFor(c => c.Password);
+            <label>Password: </label>
+            @Html.PasswordFor(c => c.Password1)
+            
         </div>
-    <button type="submit" class="btn btn-primary" id="WhatisClicked">Submit</button>
-
-
-}
-
-@*}*@
+        <div>
+            <button type="reset" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="WhatisClicked">Submit</button>
+        </div>
+}*@

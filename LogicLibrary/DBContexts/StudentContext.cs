@@ -14,12 +14,18 @@ namespace LogicLibrary.DBContexts
         public StudentContext(Student _student, string _username, string _pass)
         {
             entityFramework = Database.Instance;
-            student = entityFramework.GetStudent(_username, _pass);
+            student = _student;
             Username = _username;
             Password = _pass;
-        }
+            removethiscourse = "advance";
 
-        private Student student;
+        }
+        public StudentContext()
+        {
+            removethiscourse = "Default";
+        }
+        public Student student { get; }
+        public string removethiscourse;
 
         public bool EnrollInCouse(Course course)
         {
@@ -65,6 +71,9 @@ namespace LogicLibrary.DBContexts
             return student.Person.Subjects.Remove(course);
         }
 
-
+        public bool DropCourse(string course)
+        {
+            return student.Person.Subjects.Remove(entityFramework.GetCourse(course));
+        }
     }
 }

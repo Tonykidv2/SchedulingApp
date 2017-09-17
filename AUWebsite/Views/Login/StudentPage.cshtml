@@ -1,0 +1,47 @@
+﻿@model AUWebsite.Models.User
+@{
+    ViewBag.Title = "StudentPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>StudentPage</h2>
+
+<h3>Student Name: </h3>
+<h2>@ViewBag.Content.student.Person.FirstName @ViewBag.Content.student.Person.LastName</h2>
+
+<div>
+<h2>Current Courses</h2>
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Class Name</th>
+            <th>Credit Hours</th>
+            <th>Start Time</th>
+            <th>Number of Students</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in ViewBag.Content.student.Person.Subjects)
+    {
+        <tr>
+            <td>@item.CourseID</td>
+            <td>@item.Name</td>
+            <td>@item.CreditHours</td>
+            <td>@item.TimeSlotStart</td>
+            <td>@item.Enrolled.Count</td>
+        </tr>
+        
+    }
+    </tbody>
+</table>
+</div>
+
+<div>
+    @using (Html.BeginForm("RemoveCourse", "Login"))
+    {
+        @Html.AntiForgeryToken()
+        <input type="text" class="form-control" name="RemovethisCourse" placeholder="">
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Remove Course</button>
+    }
+</div>
