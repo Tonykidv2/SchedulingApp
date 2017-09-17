@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "ViewCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewCourse</h2>
+
+<div>
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Class Name</th>
+            <th>Credit Hours</th>
+            <th>Start Time</th>
+            <th>Number of Students</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Courses)
+        {
+            <tr>
+                <td>@item.CourseID</td>
+                <td>@item.Name</td>
+                <td>@item.CreditHours</td>
+                <td>@item.TimeSlotStart</td>
+                <td>@item.Enrolled.Count</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+</div>
+
+<div>
+    @using (Html.BeginForm("StudentPage", "Login"))
+    {
+        @Html.AntiForgeryToken()
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Return</button>
+    }
+</div>

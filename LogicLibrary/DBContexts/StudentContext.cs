@@ -50,6 +50,33 @@ namespace LogicLibrary.DBContexts
             return false;
         }
 
+        public bool EnrollInCouse(string _course)
+        {
+            var course = entityFramework.GetCourse(_course);
+            if (course == null)
+                return false;
+
+            if ((student.CurrCredits + course.CreditHours) < 18.0d && course.Enrolled.Count >= 1 && (course.Enrolled.Count + 1) < course.MaxStudents)
+            {
+                foreach (var item in student.Person.Subjects)
+                {
+                    if (item.Name == course.Name)
+                        return false;
+                    if (CheckTimeConflict(item, course))
+                        return false;
+                }
+                student.Person.Subjects.Add(course);
+                student.CurrCredits += course.CreditHours;
+                if (student.CurrCredits >= 12.0d)
+                    student.Person.FullTime = true;
+                else
+                    student.Person.FullTime = false;
+
+                entityFramework.UpdateStudent(student);
+            }
+            return false;
+        }
+
         private bool CheckTimeConflict(Course rhs, Course lhs)
         {
             int start1 = Convert.ToInt32(rhs.TimeSlotStart);

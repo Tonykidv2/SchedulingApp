@@ -61,7 +61,7 @@ namespace AUWebsite.Controllers
             
         }
 
-        [HttpGet]
+        //[HttpGet]
         public ActionResult StudentPage()
         {
             if (ContextFactory.InstanceContext == null)
@@ -84,12 +84,21 @@ namespace AUWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RemoveCourse(User context)
         {
-            ((StudentContext)ContextFactory.InstanceContext).DropCourse(context.RemovethisCourse);
+            PersonMVCContext.Instance.Incorrect = ((StudentContext)ContextFactory.InstanceContext).DropCourse(context.RemovethisCourse);
             
             return RedirectToAction("StudentPage");
         }
         public ActionResult AddCourse(User context)
         {
+            PersonMVCContext.Instance.Incorrect = ((StudentContext)ContextFactory.InstanceContext).EnrollInCouse(context.RemovethisCourse);
+
+            return RedirectToAction("StudentPage");
+        }
+
+        public ActionResult ViewCourse()
+        {
+            ViewBag.Courses = ContextFactory.InstanceContext.GetActiveCourse();
+
             return View();
         }
     }
