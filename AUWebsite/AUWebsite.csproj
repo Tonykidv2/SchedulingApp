@@ -203,6 +203,8 @@
     <Content Include="Views\Login\CreateContext.cshtml" />
     <Content Include="Views\Login\StudentPage.cshtml" />
     <Content Include="Views\Login\ViewCourse.cshtml" />
+    <Content Include="Views\Login\ProfessorPage.cshtml" />
+    <Content Include="Views\Login\UpdateCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

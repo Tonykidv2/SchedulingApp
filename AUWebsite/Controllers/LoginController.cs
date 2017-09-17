@@ -72,12 +72,19 @@ namespace AUWebsite.Controllers
 
         public ActionResult ProfessorPage()
         {
-            return View();
+            if (ContextFactory.InstanceContext == null)
+                return RedirectToAction("Index");
+            ViewBag.Content = ((ProfessorContext)ContextFactory.InstanceContext);
+            ViewBag.Roster = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.ToList().First().Enrolled;
+            return View(PersonMVCContext.Instance);
         }
 
         public ActionResult RegistarPage()
         {
-            return View();
+            if (ContextFactory.InstanceContext == null)
+                return RedirectToAction("Index");
+            ViewBag.Content = ((RegistarContext)ContextFactory.InstanceContext);
+            return View(PersonMVCContext.Instance);
         }
 
         [HttpPost]
@@ -88,6 +95,7 @@ namespace AUWebsite.Controllers
             
             return RedirectToAction("StudentPage");
         }
+        [ValidateAntiForgeryToken]
         public ActionResult AddCourse(User context)
         {
             PersonMVCContext.Instance.Incorrect = ((StudentContext)ContextFactory.InstanceContext).EnrollInCouse(context.RemovethisCourse);
@@ -100,6 +108,47 @@ namespace AUWebsite.Controllers
             ViewBag.Courses = ContextFactory.InstanceContext.GetActiveCourse();
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RemoveStudent(User _person)
+        {
+            if(_person.selected1 == "Professor")
+            {
+                PersonMVCContext.Instance.Incorrect = ((ProfessorContext)ContextFactory.InstanceContext).RemoveStudent(_person.RemoveThisStudent);
+                
+                return RedirectToAction("ProfessorPage");
+            }
+            else if(_person.selected1 == "Registar")
+            {
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateCourse()
+        {
+            return View(PersonMVCContext.Instance);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCourse(User course)
+        {
+            if (course.selected1 == "Professor")
+            {
+                PersonMVCContext.Instance.Incorrect = ((ProfessorContext)ContextFactory.InstanceContext).UpdateCourse(course.editedCourse);
+                
+                return RedirectToAction("ProfessorPage");
+            }
+            else if (course.selected1 == "Registar")
+            {
+
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -50,6 +50,7 @@
     @using (Html.BeginForm("RemoveCourse", "Login"))
     {
         @Html.AntiForgeryToken()
+        //@Model.Incorrect = false;
         <input type="text" class="form-control" name="RemovethisCourse" placeholder="">
         <button type="submit" class="btn btn-primary" id="WhatisClicked">Remove Course</button>
     }
@@ -58,6 +59,7 @@
     @using (Html.BeginForm("AddCourse", "Login"))
     {
         @Html.AntiForgeryToken()
+        //@Model.Incorrect = false;
         <input type="text" class="form-control" name="RemovethisCourse" placeholder="">
         <button type="submit" class="btn btn-primary" id="WhatisClicked">Register</button>
     }

@@ -138,7 +138,16 @@ namespace LibraryCode.Src
 
             return result;
         }
-
+        public void AddProfesor(Person _person)
+        {
+            Professors.Add(new Professor() { Person = _person });
+            SaveChanges();
+        }
+        public void AddRegistar(Person _person)
+        {
+            Registars.Add(new Registar() { Person = _person });
+            SaveChanges();
+        }
         public Professor GetProfessor(string name)
         {
             Professor result = Professors.First(p => p.Person.FirstName + " " + p.Person.LastName == name);

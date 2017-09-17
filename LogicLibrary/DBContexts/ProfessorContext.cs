@@ -10,7 +10,7 @@ namespace LogicLibrary.DBContexts
 {
     public class ProfessorContext : UserContext
     {
-        Professor professor;
+        public Professor professor;
 
         public ProfessorContext(Professor _professor, string _username, string _pass)
         {
@@ -22,11 +22,47 @@ namespace LogicLibrary.DBContexts
 
         public bool RegisterStudent(Student _student)
         {
-            _student.Person.Subjects.Add(professor.Person.Subjects.First());
-            entityFramework.UpdateStudent(_student);
-            return true;
+            try
+            {
+                _student.Person.Subjects.Add(professor.Person.Subjects.First());
+                entityFramework.UpdateStudent(_student);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
+        public bool RemoveStudent(Student _student)
+        {
+            try
+            {
+                _student.Person.Subjects.Remove(professor.Person.Subjects.First());
+                entityFramework.UpdateStudent(_student);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+        public bool RemoveStudent(string _student)
+        {
+            try
+            {
+                var stu = entityFramework.GetStudent(_student);
+                professor.Person.Subjects.First().Enrolled.Remove(stu.Person);
+                entityFramework.UpdateProfessor(professor);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
         public bool UpdateCourse(Course _course)
         {
             if(_course.Enrolled.Contains(professor.Person))

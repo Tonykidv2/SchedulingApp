@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryCode.Src;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace AUWebsite.Models
         public string selected1 { get; set; }
         public bool Incorrect { get; set; }
         public string RemovethisCourse { get; set; }
+        public string RemoveThisStudent { get; set; }
+        public Course editedCourse { get; set; }
 
         public User()
         {

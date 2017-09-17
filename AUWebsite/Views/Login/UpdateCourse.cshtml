@@ -1,0 +1,35 @@
+﻿@model AUWebsite.Models.User
+@{
+    ViewBag.Title = "UpdateCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UpdateCourse</h2>
+
+<div>
+    @using (Html.BeginForm("UpdateCourse", "Login"))
+    {
+        <div>
+            <h6>Name: @Model.editedCourse.Name</h6>
+        </div>
+        <div>
+            <h6>Credit Hours</h6>
+            <input type="text" class="form-control" name="editedCourse.CreditHours" placeholder="">
+        </div>
+        <div>
+            <h6>Max Students</h6>
+            <input type="text" class="form-control" name="editedCourse.MaxStudents" placeholder="">
+        </div>
+        <div>
+            <h6>Begin Time</h6>
+            <input type="text" class="form-control" name="editedCourse.TimeSlotStart" placeholder="">
+        </div>
+        <div>
+            <h6>End Time</h6>
+            <input type="text" class="form-control" name="editedCourse.TimeSlotEnd" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">View Courses</button>
+
+    }
+</div>
+
