@@ -5,12 +5,27 @@
 }
 
 <h2>RegistarPage</h2>
-<h3>Welcome! @ViewBag.Content.registar.Person.FirstName @ViewBag.Content.registar.Person.LastName</h3>
-
+@if (ViewBag.Content != null)
+{
+    <h3>Welcome! @ViewBag.Content.registar.Person.FirstName @ViewBag.Content.registar.Person.LastName</h3>
+}
 <div>
     @using (Html.BeginForm("ViewMasterCourse", "Login"))
     {
         <button type="submit" class="btn btn-primary" id="WhatisClicked">View Master Schedule</button>
+    }
+</div>
+<div>
+    @using (Html.BeginForm("CreateCourse", "Login", FormMethod.Get))
+    {
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Create Course</button>
+    }
+</div>
 
+<div>
+    @using (Html.BeginForm("DeleteCourse", "Login"))
+    {
+        @Html.TextBoxFor(c => c.editedCourse.Name)
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Delete Course</button>
     }
 </div>

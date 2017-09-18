@@ -75,7 +75,14 @@ namespace AUWebsite.Controllers
             if (ContextFactory.InstanceContext == null)
                 return RedirectToAction("Index");
             ViewBag.Content = ((ProfessorContext)ContextFactory.InstanceContext);
-            ViewBag.Roster = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.ToList().First().Enrolled;
+            try
+            {
+                ViewBag.Roster = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.ToList().First().Enrolled;
+            }
+            catch
+            {
+                ViewBag.Roster = null;
+            }
             return View(PersonMVCContext.Instance);
         }
 
@@ -173,6 +180,26 @@ namespace AUWebsite.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteCourse(User Course)
+        {
+            PersonMVCContext.Instance.Incorrect = ((RegistarContext)ContextFactory.InstanceContext).DeleteCourse(Course.editedCourse);
+
+            return RedirectToAction("RegistarPage");
+        }
+
+        [HttpGet]
+        public ActionResult CreateCourse()
+        {
+            return View(PersonMVCContext.Instance);
+        }
+        [HttpPost]
+        public ActionResult CreateCourse(User _course)
+        {
+            PersonMVCContext.Instance.Incorrect = ((RegistarContext)ContextFactory.InstanceContext).CreateCourse(_course.editedCourse);
+
+            return RedirectToAction("RegistarPage");
         }
     }
 }

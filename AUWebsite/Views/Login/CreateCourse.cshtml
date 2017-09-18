@@ -1,0 +1,42 @@
+﻿@model AUWebsite.Models.User
+@{
+    ViewBag.Title = "CreateCourse";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateCourse</h2>
+
+@using (Html.BeginForm("CreateCourse", "Login"))
+{
+    <div>
+        <h5>Name:  </h5>
+        @Html.TextBoxFor(c => c.editedCourse.Name)
+    </div>
+    <div>
+        <h5>Credit Hours: </h5>
+        @Html.TextBoxFor(c => c.editedCourse.CreditHours)
+    </div>
+    <div>
+        <h5>Max Students:  </h5>
+        @Html.TextBoxFor(c => c.editedCourse.MaxStudents)
+    </div>
+    <div>
+        <h5>Time Start:  </h5>
+        @Html.TextBoxFor(c => c.editedCourse.TimeSlotStart)
+    </div>
+    <div>
+        <h5>Time End:  </h5>
+        @Html.TextBoxFor(c => c.editedCourse.TimeSlotEnd)
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Complete</button>
+    </div>
+}
+
+@using (Html.BeginForm("RegistarPage", "Login"))
+{
+    <div>
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Cancel</button>
+    </div>
+}
+

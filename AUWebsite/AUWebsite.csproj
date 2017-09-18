@@ -207,6 +207,7 @@
     <Content Include="Views\Login\UpdateCourse.cshtml" />
     <Content Include="Views\Login\RegistarPage.cshtml" />
     <Content Include="Views\Login\ViewMasterCourse.cshtml" />
+    <Content Include="Views\Login\CreateCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

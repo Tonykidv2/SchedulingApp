@@ -16,7 +16,9 @@
     </div>
 }
 
-<div>
+@if (ViewBag.Content != null || ViewBag.Roster != null)
+{
+    <div>
     <h2>Current Course</h2>
     <table class="table table-striped table-hover ">
         <thead>
@@ -65,7 +67,7 @@
         </tbody>
     </table>
 </div>
-
+}
 <div>
     @using (Html.BeginForm("RemoveStudent", "Login"))
     {
