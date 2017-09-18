@@ -9,7 +9,7 @@ namespace LogicLibrary
 {
     public abstract class UserContext
     {
-        protected EntityFramework entityFramework;
+        public EntityFramework entityFramework;
         protected string Username;
         protected string Password;
 

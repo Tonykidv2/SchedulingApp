@@ -59,6 +59,21 @@ namespace LogicLibrary.DBContexts
                 return false;
             }
         }
+        public bool AssignToCourse(string _course, string _person)
+        {
+            try
+            {
+                var person = entityFramework.GetPerson(_person);
+                var course = entityFramework.GetCourse(_course);
+                course.Enrolled.Add(person);
+                entityFramework.UpdateCourse(course);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public bool AssignToCourse(Course _course, List<Person> _persons)
         {

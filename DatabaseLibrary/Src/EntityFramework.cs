@@ -254,5 +254,20 @@ namespace LibraryCode.Src
             }
             return result;
         }
+
+        public Person GetPerson(string name)
+        {
+            Person result = null;
+            try
+            {
+                result = Persons.First(p => p.FirstName + " " + p.LastName == name);
+            }
+            catch
+            {
+                return null;
+            }
+
+            return result;
+        }
     }
 }

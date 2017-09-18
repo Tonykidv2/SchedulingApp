@@ -194,11 +194,19 @@ namespace AUWebsite.Controllers
         {
             return View(PersonMVCContext.Instance);
         }
+
         [HttpPost]
         public ActionResult CreateCourse(User _course)
         {
-            PersonMVCContext.Instance.Incorrect = ((RegistarContext)ContextFactory.InstanceContext).CreateCourse(_course.editedCourse);
+            PersonMVCContext.Instance.Incorrect = !((RegistarContext)ContextFactory.InstanceContext).CreateCourse(_course.editedCourse);
 
+            return RedirectToAction("RegistarPage");
+        }
+
+        public ActionResult Assign(User _things)
+        {
+
+            PersonMVCContext.Instance.Incorrect = !((RegistarContext)ContextFactory.InstanceContext).AssignToCourse(_things.RemovethisCourse, _things.RemoveThisStudent);
             return RedirectToAction("RegistarPage");
         }
     }
