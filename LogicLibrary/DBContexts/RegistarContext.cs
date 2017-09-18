@@ -10,7 +10,7 @@ namespace LogicLibrary.DBContexts
 {
     public class RegistarContext : UserContext
     {
-        Registar registar;
+        public Registar registar;
 
         public RegistarContext(Registar _registar, string _username, string _pass)
         {

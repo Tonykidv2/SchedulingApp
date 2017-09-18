@@ -91,12 +91,17 @@ namespace LogicLibrary.DBContexts
             return result;
         }
 
-        public bool CancelClass(Course _course)
+        public bool CancelClass()
         {
-            if (professor.Person.Subjects.First() != null)
+            if (professor.Person.Subjects.Count > 0)
             {
-                _course.Enrolled.Clear();
-                entityFramework.UpdateCourse(_course);
+                foreach (var item in professor.Person.Subjects)
+                {
+                    item.Enrolled.Clear();
+                    item.Enrolled.Add(professor.Person);
+                    entityFramework.UpdateCourse(item);
+                }
+                
                 return true;
             }
 

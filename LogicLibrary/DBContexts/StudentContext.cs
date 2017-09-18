@@ -52,6 +52,7 @@ namespace LogicLibrary.DBContexts
 
         public bool EnrollInCouse(string _course)
         {
+
             var course = entityFramework.GetCourse(_course);
             if (course == null)
                 return false;
@@ -95,11 +96,18 @@ namespace LogicLibrary.DBContexts
 
         public bool DropCourse(Course course)
         {
-            return student.Person.Subjects.Remove(course);
+            var check = student.Person.Subjects.Remove(course);
+            if (check)
+                student.CurrCredits -= course.CreditHours;
+            return check;
         }
 
         public bool DropCourse(string course)
         {
+            var cou = entityFramework.GetCourse(course);
+            if (cou == null)
+                return false;
+            student.CurrCredits -= cou.CreditHours;
             return student.Person.Subjects.Remove(entityFramework.GetCourse(course));
         }
     }

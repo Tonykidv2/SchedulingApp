@@ -100,7 +100,15 @@ namespace LibraryCode.Src
 
         public Course GetCourse(string name)
         {
-            return Courses.First(p => p.Name == name);
+            try
+            {
+                return Courses.First(p => p.Name == name);
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
         public void UpdateStudent(Student _student)
@@ -238,6 +246,7 @@ namespace LibraryCode.Src
             try
             {
                 result = Registars.First(p => p.Person.Username == _username && p.Person.Password == _pass);
+                result.Person = Persons.First(p => p.Username == _username && p.Password == _pass);
             }
             catch
             {

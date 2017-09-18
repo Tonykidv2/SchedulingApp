@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "ProfessorPage";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.selected1 = "Professor";
 }
 
 <h2>ProfessorPage</h2>
@@ -76,8 +77,16 @@
 </div>
 
 <div>
-    @using (Html.BeginForm("UpdateCourse", "Login"))
+    @using (Html.BeginForm("UpdateCourse", "Login", FormMethod.Get))
     {
         <button type="submit" class="btn btn-primary" id="WhatisClicked">Edit Your Course</button>
+    }
+</div>
+
+<div>
+    @using (Html.BeginForm("CancelCourse", "Login"))
+    {
+        <button type="submit" class="btn btn-primary" id="WhatisClicked">Cancel Course</button>
+
     }
 </div>

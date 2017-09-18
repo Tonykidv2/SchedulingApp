@@ -19,7 +19,7 @@ namespace DebuggingDb
         public static void TEST()
         {
             var ef = new EntityFramework();
-
+            
             var pro = ef.GetProfessor("Joe DelRocco");
             var cou = ef.GetCourse("Programming");
 

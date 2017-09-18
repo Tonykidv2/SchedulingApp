@@ -91,14 +91,14 @@ namespace AUWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult RemoveCourse(User context)
         {
-            PersonMVCContext.Instance.Incorrect = ((StudentContext)ContextFactory.InstanceContext).DropCourse(context.RemovethisCourse);
+            PersonMVCContext.Instance.Incorrect = !((StudentContext)ContextFactory.InstanceContext).DropCourse(context.RemovethisCourse);
             
             return RedirectToAction("StudentPage");
         }
         [ValidateAntiForgeryToken]
         public ActionResult AddCourse(User context)
         {
-            PersonMVCContext.Instance.Incorrect = ((StudentContext)ContextFactory.InstanceContext).EnrollInCouse(context.RemovethisCourse);
+            PersonMVCContext.Instance.Incorrect = !((StudentContext)ContextFactory.InstanceContext).EnrollInCouse(context.RemovethisCourse);
 
             return RedirectToAction("StudentPage");
         }
@@ -109,13 +109,18 @@ namespace AUWebsite.Controllers
 
             return View();
         }
-
+        public ActionResult ViewMasterCourse()
+        {
+            ViewBag.Courses = ContextFactory.InstanceContext.GetActiveCourse();
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult RemoveStudent(User _person)
         {
             if(_person.selected1 == "Professor")
             {
+                
                 PersonMVCContext.Instance.Incorrect = ((ProfessorContext)ContextFactory.InstanceContext).RemoveStudent(_person.RemoveThisStudent);
                 
                 return RedirectToAction("ProfessorPage");
@@ -131,21 +136,40 @@ namespace AUWebsite.Controllers
         [HttpGet]
         public ActionResult UpdateCourse()
         {
+            PersonMVCContext.Instance.editedCourse = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.First();
             return View(PersonMVCContext.Instance);
         }
 
         [HttpPost]
         public ActionResult UpdateCourse(User course)
         {
-            if (course.selected1 == "Professor")
+            if (PersonMVCContext.Instance.selected1 == "Professor")
             {
+                course.editedCourse.Name = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.First().Name;
+                course.editedCourse.Enrolled = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.First().Enrolled;
+                course.editedCourse.CourseID = ((ProfessorContext)ContextFactory.InstanceContext).professor.Person.Subjects.First().CourseID;
                 PersonMVCContext.Instance.Incorrect = ((ProfessorContext)ContextFactory.InstanceContext).UpdateCourse(course.editedCourse);
                 
                 return RedirectToAction("ProfessorPage");
             }
-            else if (course.selected1 == "Registar")
+            else if (PersonMVCContext.Instance.selected1 == "Registar")
             {
 
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult CancelCourse(User course)
+        {
+            if (PersonMVCContext.Instance.selected1 == "Professor")
+            {
+                ((ProfessorContext)ContextFactory.InstanceContext).CancelClass();
+                return RedirectToAction("ProfessorPage");
+            }
+            else if (PersonMVCContext.Instance.selected1 == "Registar")
+            {
+                return RedirectToAction("Register");
             }
 
             return RedirectToAction("Index");
